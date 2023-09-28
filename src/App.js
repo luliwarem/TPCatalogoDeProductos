@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Home.js";
+import Busqueda from "./Busqueda";
+import Detalle from "./Detalle";
+import Layout from "./Layout"
 import './App.css';
+import { MyContext } from "./MyContext.js";
+import { useState } from "react";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MyContext.Provider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />}></Route>
+            <Route path="/detalle/:detalleId" element={<Detalle />}></Route>
+            <Route path="/home" element={<Home />}></Route>
+            <Route path="/busqueda" element={<Busqueda />}></Route>
+            <Route path="*" element={<h1>404</h1>}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter >
+    </MyContext.Provider>
   );
 }
 
