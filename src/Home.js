@@ -17,16 +17,12 @@ export default function Home() {
         >
           <div>
             <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Dog_Breeds.jpg" />
-            <p className="legend">Legend 1</p>
           </div>
+
           <div>
-            <img src="https://images.all-free-download.com/images/graphiclarge/adorable_animal_breed_canine_cute_dog_doggy_603714.jpg" />
-            <p className="legend">Legend 2</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Dog_Breeds.jpg" />
           </div>
-          <div>
-            <img src="https://www.rd.com/wp-content/uploads/2021/01/GettyImages-588935825.jpg?fit=700%2C467" />
-            <p className="legend">Legend 3</p>
-          </div>
+          
         </Carousel>
       </div>
       <div className="cards">

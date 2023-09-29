@@ -8,11 +8,18 @@ export default function Detalle() {
           <div class="img1">
             <img src="https://images.pexels.com/photos/7864858/pexels-photo-7864858.jpeg?cs=srgb&dl=pexels-michael-morse-7864858.jpg&fm=jpg"/>
           </div>
+          <div class="img1">
+            <img src="https://images.pexels.com/photos/7864858/pexels-photo-7864858.jpeg?cs=srgb&dl=pexels-michael-morse-7864858.jpg&fm=jpg"/>
+          </div>
+          <div class="img1">
+            <img src="https://images.pexels.com/photos/7864858/pexels-photo-7864858.jpeg?cs=srgb&dl=pexels-michael-morse-7864858.jpg&fm=jpg"/>
+          </div>
+          
         </div>
         <div class="card-title1">Lindo Perro</div>
         <div class="card-subtitle1">
           Detalle del producto bla bla bla hola jessiiiiiii bla bla bla que
-          linda camisa verde
+          lindo perrriiittoooooooo
         </div>
         <hr class="card-divider1" />
         <div class="card-footer1">

@@ -17,7 +17,7 @@ then set the desired styles for .card-img. */
     --bg-color: #fff;
     --main-color: #323232;
     --main-focus: #2d8cf0;
-    width: 300px;
+    width: 80%;
     height: 620px;
     background: var(--bg-color);
     border: 2px solid var(--main-color);
@@ -48,7 +48,7 @@ then set the desired styles for .card-img. */
     transform: scale(1);
     position: relative;
     box-sizing: border-box;
-
+    margin: 10px;
     width: 300px;
     height: 450px;
    
