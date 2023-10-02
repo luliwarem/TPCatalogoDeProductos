@@ -1,11 +1,29 @@
 import "./Home.css";
-import React, { Component } from "react";
+import React, { Component, useContext, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import {Link} from "react-router-dom"
+import { MyContext } from "./MyContext";
+import axios from "axios"
+
+
 
 export default function Home() {
+
+  const {productos, setProductos} = useContext(MyContext)
+
+  useEffect(() => {
+    async function getProductos(){
+      const response = await axios.get(
+        `https://dummyjson.com/products`
+      );
+      setProductos(response.data);
+    }
+    getProductos();
+  }, []);
+
+
   return (
     <div class="container">
       <div className="center-div">
@@ -31,15 +49,13 @@ export default function Home() {
             <img
               width="300px"
               height="auto"
-              src="https://images.pexels.com/photos/7864858/pexels-photo-7864858.jpeg?cs=srgb&dl=pexels-michael-morse-7864858.jpg&fm=jpg"
+              src={productos[1].images[1]}
             ></img>
           </div>
           <div class="card__content">
-            <p class="card__title">Card Title</p>
+            <p class="card__title">{productos[1].title}</p>
             <p class="card__description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco.
+             {productos[1].description}
             </p>
             
             <button>
@@ -52,19 +68,17 @@ export default function Home() {
             <img
               width="300px"
               height="auto"
-              src="https://images.pexels.com/photos/7864858/pexels-photo-7864858.jpeg?cs=srgb&dl=pexels-michael-morse-7864858.jpg&fm=jpg"
+              src={productos[2].images[1]}
             ></img>
           </div>
           <div class="card__content">
-            <p class="card__title">Card Title</p>
+            <p class="card__title">{productos[2].title}</p>
             <p class="card__description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco.
+              {productos[2].description}
             </p>
             
             <button>
-              <span><Link to="/detalle/1"> Detalle</Link></span>
+              <span><Link to="/detalle/2"> Detalle</Link></span>
             </button>
           </div>
         </div>
@@ -73,19 +87,17 @@ export default function Home() {
             <img
               width="300px"
               height="auto"
-              src="https://images.pexels.com/photos/7864858/pexels-photo-7864858.jpeg?cs=srgb&dl=pexels-michael-morse-7864858.jpg&fm=jpg"
+              src={productos[3].images[1]}
             ></img>
           </div>
           <div class="card__content">
-            <p class="card__title">Card Title</p>
+            <p class="card__title">{productos[3].title}</p>
             <p class="card__description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco.
+              {productos[3].description}
             </p>
             
             <button>
-              <span><Link to="/detalle/1"> Detalle</Link></span>
+              <span><Link to="/detalle/3"> Detalle</Link></span>
             </button>
           </div>
         </div>
@@ -96,15 +108,12 @@ export default function Home() {
             <img
               width="300px"
               height="auto"
-              src="https://images.pexels.com/photos/7864858/pexels-photo-7864858.jpeg?cs=srgb&dl=pexels-michael-morse-7864858.jpg&fm=jpg"
+              src={productos[4].images[1]}
             ></img>
           </div>
           <div class="card__content">
-            <p class="card__title">Card Title</p>
-            <p class="card__description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco.
+            <p class="card__title">{productos[4].title}</p>
+            <p class="card__description">{productos[4].description}
             </p>
             
             <button>
@@ -117,16 +126,13 @@ export default function Home() {
             <img
               width="300px"
               height="auto"
-              src="https://images.pexels.com/photos/7864858/pexels-photo-7864858.jpeg?cs=srgb&dl=pexels-michael-morse-7864858.jpg&fm=jpg"
-            ></img>
-          </div>
-          <div class="card__content">
-            <p class="card__title">Card Title</p>
-            <p class="card__description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco.
-            </p>
+              src={productos[5].images[1]}
+              ></img>
+            </div>
+            <div class="card__content">
+              <p class="card__title">{productos[5].title}</p>
+              <p class="card__description">{productos[5].description}
+              </p>
             
             <button>
               <span><Link to="/detalle/1"> Detalle</Link></span>
@@ -138,15 +144,12 @@ export default function Home() {
             <img
               width="300px"
               height="auto"
-              src="https://images.pexels.com/photos/7864858/pexels-photo-7864858.jpeg?cs=srgb&dl=pexels-michael-morse-7864858.jpg&fm=jpg"
+              src={productos[6].images[1]}
             ></img>
           </div>
           <div class="card__content">
-            <p class="card__title">Card Title</p>
-            <p class="card__description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco.
+            <p class="card__title">{productos[6].title}</p>
+            <p class="card__description">{productos[6].description}
             </p>
             <button>
               <span><Link to="/detalle/1"> Detalle</Link></span>

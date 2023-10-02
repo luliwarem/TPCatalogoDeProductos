@@ -1,9 +1,21 @@
+import { useState } from "react";
 import "./Busqueda.css";
+import axios from "axios"
 
 export default function Busqueda() {
+
+  const [resultadosBusqueda, setResultadosBusqueda] = useState([])
+
+
+  const handleSubmit = async (values) => {
+      const response = await axios.get(
+        `https://dummyjson.com/products/search?q=${values}`
+      ); // acá hacemos la consulta de axios a la API
+      setResultadosBusqueda(response.data.results);
+  };  
+
   return (
     <div class="container">
-      {" "}
       <form class="form">
         <button>
           <svg
@@ -25,7 +37,7 @@ export default function Busqueda() {
         </button>
         <input
           class="input"
-          placeholder="Type your text"
+          placeholder="Search for a product"
           required=""
           type="text"
         />
@@ -60,6 +72,10 @@ export default function Busqueda() {
             <span class="name">Filtro 3</span>
           </label>
         </div>
+        <button
+        type="submit"
+        onSubmit={handleSubmit}>
+        </button>
       </form>
     </div>
   );

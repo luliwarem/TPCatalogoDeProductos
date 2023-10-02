@@ -10,8 +10,9 @@ import { useState } from "react";
 
 
 function App() {
+  const [productos, setProductos] = useState([])
   return (
-    <MyContext.Provider>
+    <MyContext.Provider value={{productos, setProductos}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>

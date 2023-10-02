@@ -1,30 +1,41 @@
 import "./Detalle.css";
+import {useState, useEffect} from "react"
+import axios from "axios"
 
-export default function Detalle() {
+export default function Detalle({route}) {
+  const [productoElegido, setProductoElegido] = useState({});
+  useEffect(() => {
+    const id = route.params.id;
+    async function getById(id) {
+      const response = await axios.get(
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=16e51661dd5e48d3aabf05fb9a637d13`
+      );
+      setProductoElegido(response.data);
+    }
+    getById(id);
+  }, []);
   return (
     <div className="container">
       <div class="card1">
         <div class="card-img1">
           <div class="img1">
-            <img src="https://images.pexels.com/photos/7864858/pexels-photo-7864858.jpeg?cs=srgb&dl=pexels-michael-morse-7864858.jpg&fm=jpg"/>
+            <img src={productoElegido.images[1]} />
           </div>
           <div class="img1">
-            <img src="https://images.pexels.com/photos/7864858/pexels-photo-7864858.jpeg?cs=srgb&dl=pexels-michael-morse-7864858.jpg&fm=jpg"/>
+            <img src={productoElegido.images[2]} />
           </div>
           <div class="img1">
-            <img src="https://images.pexels.com/photos/7864858/pexels-photo-7864858.jpeg?cs=srgb&dl=pexels-michael-morse-7864858.jpg&fm=jpg"/>
+            <img src={productoElegido.images[3]} />
           </div>
-          
         </div>
-        <div class="card-title1">Lindo Perro</div>
+        <div class="card-title1">{productoElegido.title}</div>
         <div class="card-subtitle1">
-          Detalle del producto bla bla bla hola jessiiiiiii bla bla bla que
-          lindo perrriiittoooooooo
+        {productoElegido.description}
         </div>
         <hr class="card-divider1" />
         <div class="card-footer1">
           <div class="card-price1">
-            <span>$</span> 123.45
+            <span>$</span> {productoElegido.price}
           </div>
           <button class="card-btn1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
