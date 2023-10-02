@@ -1,18 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Home.js";
+import Home from "./Home";
 import Busqueda from "./Busqueda";
 import Detalle from "./Detalle";
 import Layout from "./Layout"
 import './App.css';
-import { MyContext } from "./MyContext.js";
+import { APIContextProvider } from "./apiContext";
 import { useState } from "react";
 
 
 
 function App() {
-  const [productos, setProductos] = useState([])
   return (
-    <MyContext.Provider value={{productos, setProductos}}>
+    <APIContextProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -24,7 +23,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter >
-    </MyContext.Provider>
+    </APIContextProvider>
   );
 }
 

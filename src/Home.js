@@ -4,14 +4,21 @@ import ReactDOM from "react-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
-import { MyContext } from "./MyContext";
-import axios from "axios";
+import { useAPI } from "./apiContext";
 
 export default function Home() {
-  const { productos, setProductos } = useContext(MyContext);
-
+  const { productos } = useAPI();
   return (
-    <div class="container">
+    <ul>
+      {productos.map((p) => (
+        <li key={p.id}>{p.title}{p.images[1]}</li>
+      ))}
+      
+    </ul>
+  );
+
+  /* return (
+    /*<div class="container">
       <div className="center-div">
         {console.log(productos)}
         <Carousel
@@ -32,11 +39,11 @@ export default function Home() {
       <div className="cards">
         <div class="card">
           <div className="card-image">
-            {/*<img
+            <img
               width="300px"
               height="auto"
               src={productos[1].images[1]}
-  ></img>*/}
+  ></img>
           </div>
           <div class="card__content">
             <p class="card__title">{productos[1].title}</p>
@@ -51,11 +58,11 @@ export default function Home() {
         </div>
         <div class="card">
           <div className="card-image">
-            {/*<img
+            <img
               width="300px"
               height="auto"
               src={productos[1].images[1]}
-  ></img>*/}
+  ></img>
           </div>
           <div class="card__content">
             <p class="card__title">{productos[2].title}</p>
@@ -70,11 +77,11 @@ export default function Home() {
         </div>
         <div class="card">
           <div className="card-image">
-            {/*<img
+            <img
               width="300px"
               height="auto"
               src={productos[1].images[1]}
-  ></img>*/}
+  ></img>
           </div>
           <div class="card__content">
             <p class="card__title">{productos[3].title}</p>
@@ -91,11 +98,11 @@ export default function Home() {
       <div className="cards">
         <div class="card">
           <div className="card-image">
-            {/*<img
+            <img
               width="300px"
               height="auto"
               src={productos[1].images[1]}
-  ></img>*/}
+  ></img>
           </div>
           <div class="card__content">
             <p class="card__title">{productos[4].title}</p>
@@ -110,11 +117,11 @@ export default function Home() {
         </div>
         <div class="card">
           <div className="card-image">
-            {/*<img
+            <img
               width="300px"
               height="auto"
               src={productos[1].images[1]}
-  ></img>*/}
+  ></img>
           </div>
           <div class="card__content">
             <p class="card__title">{productos[5].title}</p>
@@ -129,11 +136,11 @@ export default function Home() {
         </div>
         <div class="card">
           <div className="card-image">
-            {/*<img
+            <img
               width="300px"
               height="auto"
               src={productos[1].images[1]}
-  ></img>*/}
+  ></img>
           </div>
           <div class="card__content">
             <p class="card__title">{productos[6].title}</p>
@@ -147,5 +154,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  );
+  )*/
 }
