@@ -1,31 +1,34 @@
 import "./Detalle.css";
 import {useState, useEffect} from "react"
+import { useParams } from "react-router-dom";
 import axios from "axios"
 
 export default function Detalle({route}) {
+  const { id } = useParams();
   const [productoElegido, setProductoElegido] = useState({});
   useEffect(() => {
-    const id = route.params.id;
     async function getById(id) {
       const response = await axios.get(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=16e51661dd5e48d3aabf05fb9a637d13`
+        `https://dummyjson.com/products/${id}`
       );
       setProductoElegido(response.data);
     }
     getById(id);
   }, []);
+
   return (
+    
     <div className="container">
       <div class="card1">
         <div class="card-img1">
+          <div class="img1">
+            <img src={productoElegido.images[0]} />
+          </div>
           <div class="img1">
             <img src={productoElegido.images[1]} />
           </div>
           <div class="img1">
             <img src={productoElegido.images[2]} />
-          </div>
-          <div class="img1">
-            <img src={productoElegido.images[3]} />
           </div>
         </div>
         <div class="card-title1">{productoElegido.title}</div>

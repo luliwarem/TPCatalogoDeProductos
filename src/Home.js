@@ -9,16 +9,7 @@ import { useAPI } from "./apiContext";
 export default function Home() {
   const { productos } = useAPI();
   return (
-    <ul>
-      {productos.map((p) => (
-        <li key={p.id}>{p.title}{p.images[1]}</li>
-      ))}
-      
-    </ul>
-  );
-
-  /* return (
-    /*<div class="container">
+    <div class="container">
       <div className="center-div">
         {console.log(productos)}
         <Carousel
@@ -28,131 +19,36 @@ export default function Home() {
           showThumbs={false}
         >
           <div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Dog_Breeds.jpg" />
+            <img src="https://i.ytimg.com/vi/TX9qSaGXFyg/maxresdefault.jpg" />
           </div>
-
           <div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Dog_Breeds.jpg" />
+            <img src="https://www.ventasrosario.com.ar/wp-content/uploads/2023/01/40-nc-alum-starlight-sport-band-starlight.jpg" />
           </div>
         </Carousel>
       </div>
+      
       <div className="cards">
-        <div class="card">
-          <div className="card-image">
-            <img
-              width="300px"
-              height="auto"
-              src={productos[1].images[1]}
-  ></img>
-          </div>
-          <div class="card__content">
-            <p class="card__title">{productos[1].title}</p>
-            <p class="card__description">{productos[1].description}</p>
 
-            <button>
-              <span>
-                <Link to="/detalle/1"> Detalle</Link>
-              </span>
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <div className="card-image">
-            <img
-              width="300px"
-              height="auto"
-              src={productos[1].images[1]}
-  ></img>
-          </div>
-          <div class="card__content">
-            <p class="card__title">{productos[2].title}</p>
-            <p class="card__description">{productos[2].description}</p>
+      {productos.map((p) => (
+        p.id<=6 &&
+          <div class="card">
+            <div className="card-image">
+              <img width="300px" height="auto" src={p.images[1]} />
+            </div>
+            <div class="card__content">
+              <p class="card__title">{p.title}</p>
+              <p class="card__description">{p.description}</p>
 
-            <button>
-              <span>
-                <Link to="/detalle/2"> Detalle</Link>
-              </span>
-            </button>
+              <button>
+                <span>
+                  <Link to={`/detalle/${p.id}`} key={p.id}> Detalle</Link>
+                </span>
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="card">
-          <div className="card-image">
-            <img
-              width="300px"
-              height="auto"
-              src={productos[1].images[1]}
-  ></img>
-          </div>
-          <div class="card__content">
-            <p class="card__title">{productos[3].title}</p>
-            <p class="card__description">{productos[3].description}</p>
+      ))}
+              </div>
 
-            <button>
-              <span>
-                <Link to="/detalle/3"> Detalle</Link>
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="cards">
-        <div class="card">
-          <div className="card-image">
-            <img
-              width="300px"
-              height="auto"
-              src={productos[1].images[1]}
-  ></img>
-          </div>
-          <div class="card__content">
-            <p class="card__title">{productos[4].title}</p>
-            <p class="card__description">{productos[4].description}</p>
-
-            <button>
-              <span>
-                <Link to="/detalle/4"> Detalle</Link>
-              </span>
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <div className="card-image">
-            <img
-              width="300px"
-              height="auto"
-              src={productos[1].images[1]}
-  ></img>
-          </div>
-          <div class="card__content">
-            <p class="card__title">{productos[5].title}</p>
-            <p class="card__description">{productos[5].description}</p>
-
-            <button>
-              <span>
-                <Link to="/detalle/5"> Detalle</Link>
-              </span>
-            </button>
-          </div>
-        </div>
-        <div class="card">
-          <div className="card-image">
-            <img
-              width="300px"
-              height="auto"
-              src={productos[1].images[1]}
-  ></img>
-          </div>
-          <div class="card__content">
-            <p class="card__title">{productos[6].title}</p>
-            <p class="card__description">{productos[6].description}</p>
-            <button>
-              <span>
-                <Link to="/detalle/6"> Detalle</Link>
-              </span>
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
-  )*/
+  );
 }

@@ -7,8 +7,12 @@
 }
 
 .cards{
-  display: flex ;
-  flex-direction: row;
+  display: grid;
+  justify-content: center ;
+  align-items: center;
+
+  grid-template-columns: repeat(3, 400px);
+grid-template-rows: repeat(3, auto);
 }
 
 .center-div {

@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />}></Route>
-            <Route path="/detalle/:detalleId" element={<Detalle />}></Route>
+            <Route path="/detalle/:id" element={<Detalle />}></Route>
             <Route path="/home" element={<Home />}></Route>
             <Route path="/busqueda" element={<Busqueda />}></Route>
             <Route path="*" element={<h1>404</h1>}></Route>
