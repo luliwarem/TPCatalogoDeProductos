@@ -2,19 +2,25 @@ import "./Detalle.css";
 import {useState, useEffect} from "react"
 import { useParams } from "react-router-dom";
 import axios from "axios"
+import { useAPI } from "./apiContext";
 
-export default function Detalle({route}) {
+
+export default function Detalle() {
   const { id } = useParams();
   const [productoElegido, setProductoElegido] = useState({});
+
+  
   useEffect(() => {
     async function getById(id) {
       const response = await axios.get(
         `https://dummyjson.com/products/${id}`
       );
+      console.log(response)
       setProductoElegido(response.data);
     }
     getById(id);
   }, []);
+
 
   return (
     
@@ -22,13 +28,13 @@ export default function Detalle({route}) {
       <div class="card1">
         <div class="card-img1">
           <div class="img1">
-            <img src={productoElegido.images[0]} />
+            <img  width="300px" height="auto" src={productoElegido.images[0]} />
           </div>
           <div class="img1">
-            <img src={productoElegido.images[1]} />
+            <img  width="300px" height="auto" src={productoElegido.images[1]} />
           </div>
           <div class="img1">
-            <img src={productoElegido.images[2]} />
+            <img  width="300px" height="auto" src={productoElegido.images[2]} />
           </div>
         </div>
         <div class="card-title1">{productoElegido.title}</div>

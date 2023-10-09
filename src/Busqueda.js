@@ -1,82 +1,81 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Busqueda.css";
-import axios from "axios"
+import axios from "axios";
+import { Link } from "react-router-dom";
+
+import { useAPI } from "./apiContext";
 
 export default function Busqueda() {
+  const [resultadosBusqueda, setResultadosBusqueda] = useState([]);
+  const [palabraBuscada, setPalabraBuscada] = useState([]);
 
-  const [resultadosBusqueda, setResultadosBusqueda] = useState([])
+  const { categorias } = useAPI();
 
-
-  const handleSubmit = async (values) => {
+    const buscarPorPalabra = async (event) => {
+      setPalabraBuscada(event.target.value.toLowerCase());
       const response = await axios.get(
-        `https://dummyjson.com/products/search?q=${values}`
+        `https://dummyjson.com/products/search?q=${palabraBuscada}`
       ); // acá hacemos la consulta de axios a la API
-      setResultadosBusqueda(response.data.results);
-  };  
+      setResultadosBusqueda(response.data.products);
+    };
+
+
+  const buscarPorFiltro = async (event) => {
+    const filtroSeleccionado = event.target.innerHTML;
+    const response = await axios.get(
+      `https://dummyjson.com/products/category/${filtroSeleccionado}`
+    );
+    console.log(response.data.products); // acá hacemos la consulta de axios a la API
+    setResultadosBusqueda(response.data.products);
+  };
 
   return (
-    <div class="container">
-      <form class="form">
-        <button>
-          <svg
-            width="17"
-            height="16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-labelledby="search"
-          >
-            <path
-              d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
-              stroke="currentColor"
-              stroke-width="1.333"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></path>
-          </svg>
-        </button>
+    <div className="container">
+      <form className="form">
         <input
-          class="input"
+          className="input"
           placeholder="Search for a product"
-          required=""
           type="text"
+          name="search"
+          onChange={buscarPorPalabra}
         />
-        <button class="reset" type="reset">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          </svg>
-        </button>
-        <div class="radio-inputs">
-          <label class="radio">
-            <input type="radio" name="radio" />
-            <span class="name">Filtro 1</span>
-          </label>
-          <label class="radio">
-            <input type="radio" name="radio" />
-            <span class="name">Filtro 2</span>
-          </label>
 
-          <label class="radio">
-            <input type="radio" name="radio" />
-            <span class="name">Filtro 3</span>
-          </label>
+        <div class="paste-button">
+          <button class="button">Categories &nbsp; ▼</button>
+          <div class="dropdown-content">
+            {categorias.map((c) => (
+              <div>
+                <a id="top" onClick={buscarPorFiltro}>
+                  {c}
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
-        <button
-        type="submit"
-        onSubmit={handleSubmit}>
-        </button>
       </form>
+
+      <div className="cards">
+        {resultadosBusqueda.map((p) => (
+          <div class="card">
+            <div className="card-image">
+              <img width="300px" height="auto" src={p.images[1]} />
+            </div>
+            <div class="card__content">
+              <p class="card__title">{p.title}</p>
+              <p class="card__description">{p.description}</p>
+
+              <button>
+                <span>
+                  <Link to={`/detalle/${p.id}`} key={p.id}>
+                    {" "}
+                    Detalle
+                  </Link>
+                </span>
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
