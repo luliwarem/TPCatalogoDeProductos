@@ -1,6 +1,5 @@
 import "./Home.css";
-import React, { Component, useContext, useEffect } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
@@ -9,11 +8,11 @@ import { useAPI } from "./apiContext";
 export default function Home() {
   const { productos } = useAPI();
   return (
-    <div class="container">
+    <div className="container">
       <div className="center-div">
         {console.log(productos)}
         <Carousel
-          class="carousel"
+          className="carousel"
           showStatus={false}
           showIndicators={false}
           showThumbs={false}
@@ -31,13 +30,13 @@ export default function Home() {
 
       {productos.map((p) => (
         p.id<=6 &&
-          <div class="card">
+          <div className="card">
             <div className="card-image">
               <img width="300px" height="auto" src={p.images[1]} />
             </div>
-            <div class="card__content">
-              <p class="card__title">{p.title}</p>
-              <p class="card__description">{p.description}</p>
+            <div className="card__content">
+              <p className="card__title">{p.title}</p>
+              <p className="card__description">{p.description}</p>
 
               <button>
                 <span>

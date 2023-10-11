@@ -6,13 +6,13 @@ const APIContext = createContext();
 export function APIContextProvider({ children }) {
   const [productos, setProductos] = useState([]);
   const [categorias, setCategorias] = useState([]);
- 
+  const [productoElegido, setProductoElegido] = useState([]);
+
 
 
   useEffect(() => {
     async function fetchData() {
       const { data } = await axios.get("https://dummyjson.com/products");
-      console.log(data.products);
       setProductos(data.products);
     }
     fetchData();
@@ -26,17 +26,6 @@ export function APIContextProvider({ children }) {
       setCategorias(response.data);
     };
     buscarCategorias();
-  }, []);
-
-  useEffect(() => {
-    async function getById(id) {
-      const response = await axios.get(
-        `https://dummyjson.com/products/${id}`
-      );
-      console.log(response)
-      setProductoElegido(response.data);
-    }
-    getById(id);
   }, []);
 
   return (

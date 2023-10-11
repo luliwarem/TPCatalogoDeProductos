@@ -5,7 +5,6 @@ import Detalle from "./Detalle";
 import Layout from "./Layout"
 import './App.css';
 import { APIContextProvider } from "./apiContext";
-import { useState } from "react";
 
 
 

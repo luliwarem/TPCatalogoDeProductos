@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Busqueda.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -30,19 +30,19 @@ export default function Busqueda() {
   };
 
   return (
-    <div className="container">
-      <form className="form">
+    <div classNameName="container">
+      <form classNameName="form">
         <input
-          className="input"
+          classNameName="input"
           placeholder="Search for a product"
           type="text"
           name="search"
           onChange={buscarPorPalabra}
         />
 
-        <div class="paste-button">
-          <button class="button">Categories &nbsp; ▼</button>
-          <div class="dropdown-content">
+        <div className="paste-button">
+          <button className="button">Categories &nbsp; ▼</button>
+          <div className="dropdown-content">
             {categorias.map((c) => (
               <div>
                 <a id="top" onClick={buscarPorFiltro}>
@@ -54,15 +54,15 @@ export default function Busqueda() {
         </div>
       </form>
 
-      <div className="cards">
+      <div classNameName="cards">
         {resultadosBusqueda.map((p) => (
-          <div class="card">
-            <div className="card-image">
+          <div className="card">
+            <div classNameName="card-image">
               <img width="300px" height="auto" src={p.images[1]} />
             </div>
-            <div class="card__content">
-              <p class="card__title">{p.title}</p>
-              <p class="card__description">{p.description}</p>
+            <div className="card__content">
+              <p className="card__title">{p.title}</p>
+              <p className="card__description">{p.description}</p>
 
               <button>
                 <span>
